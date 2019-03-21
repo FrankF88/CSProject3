@@ -14,6 +14,10 @@ public class FrankFerrer_1_03 {
       double[] reimb;         // Calculated reimbursements
       int nMileage = 0;       // # of mileage values in the input file
       int nRead = 0;          // # of mileage values actually read
+      double averageMiles;    // avg miles
+      double averageReimb;    // avg reimb
+      double sumMiles;        // sum of miles
+      double sumReimb;        // sum of reimbursement
       
       // Access the input and output files
       
@@ -37,10 +41,10 @@ public class FrankFerrer_1_03 {
       calcReimbursement(mileage,reimb,nRead);
       printHeading(outputFile);
       printDetails(outputFile,mileage,reimb,nRead);
-      double averageMiles = calcAverage(mileage,nRead);
-      double averageReimb = calcAverage(reimb,nRead);
-      double sumMiles = calcSum(mileage,nRead);
-      double sumReimb = calcSum(reimb,nRead);
+      averageMiles = calcAverage(mileage,nRead);
+      averageReimb = calcAverage(reimb,nRead);
+      sumMiles = calcSum(mileage,nRead);
+      sumReimb = calcSum(reimb,nRead);
       // More data to calculate or count
 
    } // End main 
