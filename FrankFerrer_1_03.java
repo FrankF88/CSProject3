@@ -52,6 +52,11 @@ public class FrankFerrer_1_03 {
    //************************************************************************
 
    public static void explainProgram(PrintWriter output) {
+      outputFile.print("This program takes in an array of 
+                        numbers that are to be used as input
+                        for mileage.\nOnce the input is received,
+                        the program will calculate the reimbursement
+                        for mileage and output a neat table");
    } // End explainProgram
       
    //************************************************************************
@@ -75,6 +80,7 @@ public class FrankFerrer_1_03 {
                                         double[] reimb,
                                         int nProcess) {
       double mileageRate;
+      
       if(mileage > 0 && mileage < 400.00){
          mileageRate= mileage * .18;
       }
@@ -99,8 +105,10 @@ public class FrankFerrer_1_03 {
          mileageRate = ((mileage - 2600) * .06) + 195.00;   
       }
       else{
-         System.out.println("Invalid Input");
-      }   
+         outputFile.println("Invalid Input");
+      }
+      
+         
    } // End calcReimbursement
    
    //************************************************************************
@@ -121,27 +129,25 @@ public class FrankFerrer_1_03 {
    public static double calcAverage(double[] data, int nProcess) {
    
       int reimbCount;
-      double reimbAvg;
+      double averageReimb;
       
       for(int i = 0; i < data.length; i++){
          reimbCount++;
       }
       
-      reimbAvg = calcSum / reimbCount;
+      averageReimb = calcSum / reimbCount;
       
-      return reimbAvg;
+      return averageReimb;
    } // End calcAverage
    
    //************************************************************************
    
    public static double calcSum(double[] data, int nProcess) {
       
-      double reimbSum;
-      
       for(int i = 0; i < data.length; i++){
-         reimbSum += data[i];
+         sumReimb += data[i];
       
-      return reimbSum;
+      return sumReimb;
    } // End calcSum
    
 } // End class
