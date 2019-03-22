@@ -74,6 +74,30 @@ public class FrankFerrer_1_03 {
    public static void calcReimbursement(double[] mileage,
                                         double[] reimb,
                                         int nProcess) {
+   double mileageRate;
+   if(mileage < 400.00){
+      mileageRate= mileage .18;
+   }
+   
+   else if(mileage >= 400.00 && mileage <= 900.00){
+      mileageRate = ((mileage - 400) * .15) + 65.00;
+   }
+   
+   else if(mileage >= 900.00 && mileage < 1300.00){
+      mileageRate = ((mileage - 900) * .12) + 115.00;
+   }
+   
+   else if(mileage >= 1300.00 && mileage < 1900.00){
+      mileageRate = ((mileage - 1300) * .10) + 140.00;
+   }
+   
+   else if(mileage >= 1900.00 && mileage < 2600.00){
+      mileageRate = ((mileage - 1900) * .08) + 165.00;
+   }
+   
+   else{
+      mileageRate = ((mileage - 2600) * .06) + 195.00;   
+      
    } // End calcReimbursement
    
    //************************************************************************
