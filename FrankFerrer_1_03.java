@@ -52,7 +52,7 @@ public class FrankFerrer_1_03 {
    //************************************************************************
 
    public static void explainProgram(PrintWriter output) {
-      outputFile.print("This program takes in an array of 
+      outputFile.println("This program takes in an array of 
                         numbers that are to be used as input
                         for mileage.\nOnce the input is received,
                         the program will calculate the reimbursement
@@ -82,7 +82,7 @@ public class FrankFerrer_1_03 {
       double mileageRate;
       
       if(mileage > 0 && mileage < 400.00){
-         mileageRate= mileage * .18;
+         mileageRate = mileage * .18;
       }
    
       else if(mileage >= 400.00 && mileage <= 900.00){
@@ -105,7 +105,7 @@ public class FrankFerrer_1_03 {
          mileageRate = ((mileage - 2600) * .06) + 195.00;   
       }
       else{
-         outputFile.println("Invalid Input");
+         mileageRate = 0;
       }
       
          
@@ -114,6 +114,10 @@ public class FrankFerrer_1_03 {
    //************************************************************************
    
    public static void printHeading(PrintWriter output) {
+   String lineSpacing = "     ";
+   
+   System.out.println("Mileage" + lineSpacing + "Reimbursement");
+   System.out.println("-------" + lineSpacing + "-------------");
    } // End printHeading
    
    //************************************************************************
@@ -122,6 +126,12 @@ public class FrankFerrer_1_03 {
                                    double[] mileage,
                                    double[] reimb,
                                    int nProcess) {
+   String lineSpacing2 = "     ";
+   
+   for(int j = 0; j < mileage.length; j++){
+      System.out.println(mileage[i] + lineSpacing2 + reimb[i];
+   }
+                                   
    } // End printDetails 
    
    //************************************************************************
