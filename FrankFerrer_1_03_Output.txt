@@ -2,13 +2,13 @@ This program takes in an array of numbers that are to be used as input for milea
 Once the input is received,the program will calculate the reimbursement for mileage and output a neat table
 Mileage     Reimbursement
 -------     -------------
-250.60     $0.00
-99.40     $0.00
+250.60     45.11
+99.40     17.89
 -2.78     $0.00
-999.40     $0.00
-799.40     $0.00
-1899.80     $0.00
+999.40     126.93
+799.40     124.91
+1899.80     199.98
  0.00     $0.00
-1300.20     $0.00
-1101.70     $0.00
-3333.30     $0.00
+1300.20     140.02
+1101.70     139.20
+3333.30     239.00
