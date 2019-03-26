@@ -1,5 +1,6 @@
 This program takes in an array of numbers that are to be used as input for mileage.
 Once the input is received,the program will calculate the reimbursement for mileage and output a neat table
+
 Mileage     Reimbursement
 -------     -------------
 250.6       45.11

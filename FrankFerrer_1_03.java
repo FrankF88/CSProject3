@@ -58,7 +58,9 @@ public class FrankFerrer_1_03 {
    //************************************************************************
 
    public static void explainProgram(PrintWriter output) {
-      output.println("This program takes in an array of numbers that are to be used as input for mileage.\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table");
+      output.println("This program takes in an array of numbers that are to be used as input for mileage.\r" +
+                     "\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table"
+                     + "\r\n");
    } // End explainProgram
       
    //************************************************************************
