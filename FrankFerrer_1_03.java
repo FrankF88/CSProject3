@@ -46,14 +46,16 @@ public class FrankFerrer_1_03 {
       sumMiles = calcSum(mileage,nRead);
       sumReimb = calcSum(reimb,nRead);
       // More data to calculate or count
-
+      
+      inputFile.close();
+      outputFile.close();
+      System.exit(0);	
    } // End main 
       
    //************************************************************************
 
    public static void explainProgram(PrintWriter output) {
-   
-      String explainString = "This program takes in an array of numbers that are to be used as input for mileage.\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table";
+      output.println("This program takes in an array of numbers that are to be used as input for mileage.\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table");
    } // End explainProgram
       
    //************************************************************************
@@ -116,8 +118,8 @@ public class FrankFerrer_1_03 {
    public static void printHeading(PrintWriter output) {
    String lineSpacing = "     ";
    
-   System.out.println("Mileage" + lineSpacing + "Reimbursement");
-   System.out.println("-------" + lineSpacing + "-------------");
+   output.println("Mileage" + lineSpacing + "Reimbursement");
+   output.println("-------" + lineSpacing + "-------------");
    } // End printHeading
    
    //************************************************************************
@@ -129,8 +131,8 @@ public class FrankFerrer_1_03 {
    String lineSpacing2 = "     ";
    
    for(int j = 0; j < mileage.length; j++){
-      System.out.println(mileage[j] + lineSpacing2 + 
-            Toolkit.leftPad(reimb[j], 1, "0.00", "$"));
+      output.println(Toolkit.leftPad(mileage[j], 5, "0.00") + lineSpacing2 + 
+            Toolkit.leftPad(reimb[j], 5, "0.00", "$"));
    }
                                    
    } // End printDetails 
