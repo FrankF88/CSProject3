@@ -3,7 +3,7 @@ import java.io.*;
 
 public class FrankFerrer_1_03 {
 
-   public static void main(String[ ] args) {
+   public static void main(String[ ] args) throws IOException {
    
       // Declarations
       final String INPUT_FILE  = "FrankFerrer_1_03_Input.txt";
@@ -52,11 +52,8 @@ public class FrankFerrer_1_03 {
    //************************************************************************
 
    public static void explainProgram(PrintWriter output) {
-      outputFile.println("This program takes in an array of 
-                        numbers that are to be used as input
-                        for mileage.\nOnce the input is received,
-                        the program will calculate the reimbursement
-                        for mileage and output a neat table");
+   
+      String explainString = "This program takes in an array of numbers that are to be used as input for mileage.\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table";
    } // End explainProgram
       
    //************************************************************************
@@ -81,32 +78,35 @@ public class FrankFerrer_1_03 {
                                         int nProcess) {
       double mileageRate;
       
-      if(mileage > 0 && mileage < 400.00){
-         mileageRate = mileage * .18;
+      for(int i =0; i < mileage.length; i++){
+      
+      if(mileage[i] > 0 && mileage[i] < 400.00){
+         mileageRate = mileage[i] * .18;
       }
    
-      else if(mileage >= 400.00 && mileage <= 900.00){
-         mileageRate = ((mileage - 400) * .15) + 65.00;
+      else if(mileage[i] >= 400.00 && mileage[i] <= 900.00){
+         mileageRate = ((mileage[i] - 400) * .15) + 65.00;
       }
    
-      else if(mileage >= 900.00 && mileage < 1300.00){
-         mileageRate = ((mileage - 900) * .12) + 115.00;
+      else if(mileage[i] >= 900.00 && mileage[i] < 1300.00){
+         mileageRate = ((mileage[i] - 900) * .12) + 115.00;
       }
    
-      else if(mileage >= 1300.00 && mileage < 1900.00){
-         mileageRate = ((mileage - 1300) * .10) + 140.00;
+      else if(mileage[i] >= 1300.00 && mileage[i] < 1900.00){
+         mileageRate = ((mileage[i] - 1300) * .10) + 140.00;
       }
    
-      else if(mileage >= 1900.00 && mileage < 2600.00){
-         mileageRate = ((mileage - 1900) * .08) + 165.00;
+      else if(mileage[i] >= 1900.00 && mileage[i] < 2600.00){
+         mileageRate = ((mileage[i] - 1900) * .08) + 165.00;
       }
       
-      else if(mileage >= 2600.00){
-         mileageRate = ((mileage - 2600) * .06) + 195.00;   
+      else if(mileage[i] >= 2600.00){
+         mileageRate = ((mileage[i] - 2600) * .06) + 195.00;   
       }
       else{
          mileageRate = 0;
       }
+    }
       
          
    } // End calcReimbursement
@@ -129,7 +129,8 @@ public class FrankFerrer_1_03 {
    String lineSpacing2 = "     ";
    
    for(int j = 0; j < mileage.length; j++){
-      System.out.println(mileage[i] + lineSpacing2 + reimb[i];
+      System.out.println(mileage[j] + lineSpacing2 + 
+            Toolkit.leftPad(reimb[j], 1, "0.00", "$"));
    }
                                    
    } // End printDetails 
@@ -138,8 +139,9 @@ public class FrankFerrer_1_03 {
    
    public static double calcAverage(double[] data, int nProcess) {
    
-      int reimbCount;
+      int reimbCount = 0;
       double averageReimb;
+      double calcSum = 0;
       
       for(int i = 0; i < data.length; i++){
          reimbCount++;
@@ -153,11 +155,10 @@ public class FrankFerrer_1_03 {
    //************************************************************************
    
    public static double calcSum(double[] data, int nProcess) {
-      
+      double sumReimb = 0;
       for(int i = 0; i < data.length; i++){
          sumReimb += data[i];
-      
+      }
       return sumReimb;
-   } // End calcSum
-   
+   } // End calcSum  
 } // End class
