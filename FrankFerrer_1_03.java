@@ -46,7 +46,10 @@ public class FrankFerrer_1_03 {
       sumMiles = calcSum(mileage,nRead);
       sumReimb = calcSum(reimb,nRead);
       // More data to calculate or count
-      
+      outputFile.println("");
+      outputFile.println("Average Mileage is: " + averageMiles);
+      outputFile.println("");
+      outputFile.println("Average Reimbursement is: $" + averageReimb);
       inputFile.close();
       outputFile.close();
       System.exit(0);	
@@ -127,10 +130,10 @@ public class FrankFerrer_1_03 {
                                    double[] mileage,
                                    double[] reimb,
                                    int nProcess) {
-   String lineSpacing2 = "     ";
+   String lineSpacing2 = "       ";
    
    for(int j = 0; j < mileage.length; j++){
-      output.println(Toolkit.leftPad(mileage[j], 5, "0.00") + lineSpacing2 + 
+      output.println(mileage[j] + lineSpacing2 + 
             Toolkit.leftPad(reimb[j], 5, "0.00", "$"));
    }
                                    
@@ -141,16 +144,19 @@ public class FrankFerrer_1_03 {
    public static double calcAverage(double[] data, int nProcess) {
    
       int reimbCount = 0;
-      double averageReimb;
+      double averageCalculation;
       double calcSum = 0;
       
       for(int i = 0; i < data.length; i++){
-         reimbCount++;
+         if(data[i] > 0){
+            calcSum += data[i];
+            reimbCount++;
+         }
       }
       
-      averageReimb = calcSum / reimbCount;
+      averageCalculation = calcSum / reimbCount;
       
-      return averageReimb;
+      return averageCalculation;
    } // End calcAverage
    
    //************************************************************************
@@ -158,7 +164,9 @@ public class FrankFerrer_1_03 {
    public static double calcSum(double[] data, int nProcess) {
       double sumReimb = 0;
       for(int i = 0; i < data.length; i++){
-         sumReimb += data[i];
+         if(data[i] > 0){
+            sumReimb += data[i];
+         }
       }
       return sumReimb;
    } // End calcSum  
