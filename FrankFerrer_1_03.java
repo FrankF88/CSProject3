@@ -46,6 +46,7 @@ public class FrankFerrer_1_03 {
       sumMiles = calcSum(mileage,nRead);
       sumReimb = calcSum(reimb,nRead);
       // More data to calculate or count
+      
       outputFile.println("");
       outputFile.println("Average Mileage is: " + averageMiles);
       outputFile.println("");
