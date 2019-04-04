@@ -1,9 +1,25 @@
+/**
+    This program takes in an array of numbers that are to 
+    be used as input for mileage
+    Once the input is received,the program will calculate the 
+    reimbursement for mileage and output a neat table
+    
+    @author Frank Ferrer & Mbami Luka
+    Project #3, CS 1050, Section 1
+
+    Superfluous - unnecessary, especially through being more than enough.
+    
+    "All that was great in the past was ridiculed, condemned, combated, suppressed 
+     only to emerge all the more powerfully, all the more triumphantly from the struggle."
+    - Nikola Tesla (1856 - 1943)
+*/
+
 import java.util.Scanner;
 import java.io.*;
-
 public class FrankFerrer_1_03 {
 
-   public static void main(String[ ] args) throws IOException {
+   public static void main(String[] args) throws IOException 
+   {
    
       // Declarations
       final String INPUT_FILE  = "FrankFerrer_1_03_Input.txt";
@@ -13,11 +29,12 @@ public class FrankFerrer_1_03 {
       double[] mileage;       // Mileage values to process
       double[] reimb;         // Calculated reimbursements
       int nMileage = 0;       // # of mileage values in the input file
-      int nRead = 0;          // # of mileage values actually read
+      int nRead = 0;
       double averageMiles;    // avg miles
       double averageReimb;    // avg reimb
       double sumMiles;        // sum of miles
-      double sumReimb;        // sum of reimbursement
+      double sumReimb;		  // # of mileage values actually read
+      int validInput = 0; 
       
       // Access the input and output files
       
@@ -45,24 +62,31 @@ public class FrankFerrer_1_03 {
       averageReimb = calcAverage(reimb,nRead);
       sumMiles = calcSum(mileage,nRead);
       sumReimb = calcSum(reimb,nRead);
+      validInput = nPositiveNums(mileage);
+      
       // More data to calculate or count
       
-      outputFile.println("");
-      outputFile.println("Average Mileage is: " + averageMiles);
-      outputFile.println("");
-      outputFile.println("Average Reimbursement is: $" + averageReimb);
+      // Display info to outputFile and console with method
+      printSummary(outputFile, averageMiles, averageReimb, sumReimb,
+    			   sumReimb, nRead, validInput);
+      
       inputFile.close();
       outputFile.close();
       System.exit(0);	
+
    } // End main 
       
    //************************************************************************
 
-   public static void explainProgram(PrintWriter output) {
-      output.println("This program takes in an array of numbers that are to be used as input for mileage.\r" +
-                     "\nOnce the input is received,the program will calculate the reimbursement for mileage and output a neat table"
-                     + "\r\n");
-   } // End explainProgram
+   public static void explainProgram(PrintWriter output) 
+   {
+      String line = ("This program takes in an array of numbers that are to be used as input for mileage.\r" +
+       "\nOnce the input is received,the program will calculate the reimbursement for mileage "
+     + "and output a neat table" +
+       "\r\n");
+      System.out.println(line);
+      output.println(line);
+	} // End explainProgram
       
    //************************************************************************
 
@@ -81,50 +105,59 @@ public class FrankFerrer_1_03 {
    
    //************************************************************************
    
-   public static void calcReimbursement(double[] mileage,
+   	public static void calcReimbursement(double[] mileage,
                                         double[] reimb,
-                                        int nProcess) {
-      
-      for(int i =0; i < mileage.length; i++){
-      
-      if(mileage[i] > 0 && mileage[i] < 400.00){
-         reimb[i] = mileage[i] * .18;
-      }
+                                        int nProcess) 
+   	{
+   		for(int i =0; i < nProcess; i++){
+   	      
+   	      if(mileage[i] < 400.00){
+   	         reimb[i] = mileage[i] * .18;
+   	      }
+   	   
+   	      else if(mileage[i] <= 900.00){
+   	         reimb[i] = ((mileage[i] - 400) * .15) + 65.00;
+   	      }
+   	   
+   	      else if(mileage[i] <= 1300.00){
+   	         reimb[i] = ((mileage[i] - 900) * .12) + 115.00;
+   	      }
+   	   
+   	      else if(mileage[i] <= 1900.00){
+   	         reimb[i] = ((mileage[i] - 1300) * .10) + 140.00;
+   	      }
+   	   
+   	      else if(mileage[i] <= 2600.00){
+   	         reimb[i] = ((mileage[i] - 1900) * .08) + 165.00;
+   	      }
+   	      
+   	      else if(mileage[i] >= 2600.00){
+   	         reimb[i] = ((mileage[i] - 2600) * .06) + 195.00;   
+   	      }
+   	      else{
+   	         reimb[i] = 0;
+   	      }
+   	    }
+   	      
+   	         
+   	   } // End calcReimbursement
    
-      else if(mileage[i] >= 400.00 && mileage[i] <= 900.00){
-         reimb[i] = ((mileage[i] - 400) * .15) + 65.00;
-      }
-   
-      else if(mileage[i] >= 900.00 && mileage[i] < 1300.00){
-         reimb[i] = ((mileage[i] - 900) * .12) + 115.00;
-      }
-   
-      else if(mileage[i] >= 1300.00 && mileage[i] < 1900.00){
-         reimb[i] = ((mileage[i] - 1300) * .10) + 140.00;
-      }
-   
-      else if(mileage[i] >= 1900.00 && mileage[i] < 2600.00){
-         reimb[i] = ((mileage[i] - 1900) * .08) + 165.00;
-      }
-      
-      else if(mileage[i] >= 2600.00){
-         reimb[i] = ((mileage[i] - 2600) * .06) + 195.00;   
-      }
-      else{
-         reimb[i] = 0;
-      }
-    }
-      
-         
-   } // End calcReimbursement
+
    
    //************************************************************************
    
-   public static void printHeading(PrintWriter output) {
-   String lineSpacing = "     ";
-   
-   output.println("Mileage" + lineSpacing + "Reimbursement");
-   output.println("-------" + lineSpacing + "-------------");
+   public static void printHeading(PrintWriter output) 
+   {
+	   String line1 = ("Mileage" + "     " + "Reimbursement");
+      String line2 = ("-------" + "     " + "-------------");
+	   // Print to outputFile
+	   output.println(line1);
+	   output.println(line2);
+	   
+	   //print to console
+	   System.out.println(line1);
+	   System.out.println(line2);
+	   
    } // End printHeading
    
    //************************************************************************
@@ -132,45 +165,106 @@ public class FrankFerrer_1_03 {
    public static void printDetails(PrintWriter output,
                                    double[] mileage,
                                    double[] reimb,
-                                   int nProcess) {
-   String lineSpacing2 = "       ";
-   
-   for(int j = 0; j < mileage.length; j++){
-      output.println(mileage[j] + lineSpacing2 + 
-            Toolkit.leftPad(reimb[j], 5, "0.00", "$"));
-   }
-                                   
+                                   int nProcess) 
+   {
+	   String lineSpacing2 = ("      ");
+	   for(int j = 0; j < mileage.length; j++){
+        String line1 =(Toolkit.leftPad(mileage[j], 7, "0.00", " ") + 
+            "      "  + Toolkit.leftPad(reimb[j], 12, "$0.00", " "));
+                     
+        String line2 =(Toolkit.leftPad(mileage[j], 7, "0.00", " ") + 
+			   "      " + "       *****");           
+		  if (mileage[j] > 0)
+		  {
+		     System.out.println(line1);
+		  
+	        output.println(line1);
+		  }
+		  else
+		  {
+			  System.out.println(line2);
+			  
+		      output.println(line2);
+		  }
+	   }
    } // End printDetails 
    
    //************************************************************************
    
-   public static double calcAverage(double[] data, int nProcess) {
-   
-      int reimbCount = 0;
-      double averageCalculation;
-      double calcSum = 0;
-      
-      for(int i = 0; i < data.length; i++){
-         if(data[i] > 0){
-            calcSum += data[i];
-            reimbCount++;
-         }
-      }
-      
-      averageCalculation = calcSum / reimbCount;
-      
-      return averageCalculation;
+   public static double calcAverage(double[] data, int nProcess) 
+   {
+	   int reimbCount = 0;
+	      double averageCalculation;
+	      double calcSum = 0;
+	      
+	      for(int i = 0; i < nProcess; i++){
+	         if(data[i] > 0){
+	            calcSum += data[i];
+	            reimbCount++;
+	         }
+	      }
+	      
+	      averageCalculation = calcSum / reimbCount;
+	      
+	      return averageCalculation;
    } // End calcAverage
    
    //************************************************************************
    
-   public static double calcSum(double[] data, int nProcess) {
-      double sumReimb = 0;
-      for(int i = 0; i < data.length; i++){
-         if(data[i] > 0){
-            sumReimb += data[i];
-         }
-      }
-      return sumReimb;
-   } // End calcSum  
+   public static double calcSum(double[] data, int nProcess) 
+   {
+	   
+	   double sumReimb = 0;
+	   for(int i = 0; i < nProcess; i++)
+	   {
+		   if(data[i] > 0)
+		   {
+			   sumReimb += data[i];
+		   }
+	   }
+	   return sumReimb;
+   } // End calcSum
+   
+   public static int nPositiveNums(double [] data)
+   {
+	   int nPositiveNums = 0;
+	   for (int i = 0; i < data.length ; i++)
+	   {
+		   if (data[i] > 0)
+		   {
+			   nPositiveNums ++;
+		   }
+	   }
+	   return nPositiveNums;
+   } // End nPositiveNums
+   
+   public static void printSummary
+   (PrintWriter output, double avgM, double avgR, double sumM, 
+	double sumR, int nVals, int valNum)
+   {
+         String line1 =("o Average Mileage is: " + avgM);
+         String line2 =("o Average Reimbursement is: $" + avgR);
+         String line3 =("o Total Mileage is: " + sumM);
+         String line4 =("o Total Reimbursement is: $" + sumR);
+         String line5 =("o Number of values processed: " + nVals);
+         String line6 =("o Number of valid values processed: " + valNum);
+         
+	   	output.println("");
+	      output.println(line1);
+	      output.println(line2);
+	      output.println(line3);
+	      output.println(line4);
+	      output.println(line5);
+	      output.println(line6);
+	      //print to console
+	      System.out.println("");
+	      System.out.println(line1);
+	      System.out.println(line2);
+	      System.out.println(line3);
+	      System.out.println(line4);
+	      System.out.println(line5);
+         System.out.println(line6);
+   
+   }
+   
 } // End class
