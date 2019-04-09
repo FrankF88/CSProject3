@@ -236,17 +236,17 @@ public class FrankFerrer_1_03 {
 	   return nPositiveNums;
    } // End nPositiveNums
    
-   public static void printSummary
-   (PrintWriter output, double avgM, double avgR, double sumM, 
-	double sumR, int nVals, int valNum)
-   {
-         String line1 =("o Average Mileage is: " + avgM
-         + "\r\no Average Reimbursement is: $" + avgR
-         + "\r\no Total Mileage is: " + sumM
-         + "\r\no Total Reimbursement is: $" + sumR
-         + "\r\no Number of values processed: " + nVals
-         + "\r\no Number of valid values processed: " + valNum);
+   public static void printSummary(PrintWriter output, double averageMile, double averageReimb,
+	                               double sumMiles, double sumReim, int numVals, int validNums){
+                                  
+         String line1 =("o Average Mileage is: " + averageMile
+         + "\r\no Average Reimbursement is: $" + averageReimb
+         + "\r\no Total Mileage is: " + sumMiles
+         + "\r\no Total Reimbursement is: $" + sumReim
+         + "\r\no Number of values processed: " + numVals
+         + "\r\no Number of valid values processed: " + validNums);
          
+         //print to output file
 	   	output.println("");
 	      output.println(line1);
          
