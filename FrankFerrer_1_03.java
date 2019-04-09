@@ -191,18 +191,18 @@ public class FrankFerrer_1_03 {
    
    public static double calcAverage(double[] data, int nProcess) 
    {
-	   int reimbCount = 0;
+	      int numCount = 0;
 	      double averageCalculation;
 	      double calcSum = 0;
 	      
 	      for(int i = 0; i < nProcess; i++){
 	         if(data[i] > 0){
 	            calcSum += data[i];
-	            reimbCount++;
+	            numCount++;
 	         }
 	      }
 	      
-	      averageCalculation = calcSum / reimbCount;
+	      averageCalculation = calcSum / numCount;
 	      
 	      return averageCalculation;
    } // End calcAverage
