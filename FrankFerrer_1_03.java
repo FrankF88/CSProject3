@@ -26,15 +26,15 @@ public class FrankFerrer_1_03 {
       final String OUTPUT_FILE = "FrankFerrer_1_03_Output.txt";
 
       
-      double[] mileage;       // Mileage values to process
-      double[] reimb;         // Calculated reimbursements
-      int nMileage = 0;       // # of mileage values in the input file
+      double[] mileage;      // Mileage values to process
+      double[] reimb;        // Calculated reimbursements
+      int nMileage = 0;      // # of mileage values in the input file
       int nRead = 0;
-      double averageMiles;    // avg miles
-      double averageReimb;    // avg reimb
-      double sumMiles;        // sum of miles
+      double averageMiles;   // average miles
+      double averageReimb;   // average reimbursement
+      double sumMiles;       // sum of miles
       double sumReimb;		  // # of mileage values actually read
-      int validInput = 0; 
+      int validInput = 0;    // # of valid inputs
       
       // Access the input and output files
       
@@ -148,15 +148,13 @@ public class FrankFerrer_1_03 {
    
    public static void printHeading(PrintWriter output) 
    {
-	   String line1 = ("Mileage" + "     " + "Reimbursement");
-      String line2 = ("-------" + "     " + "-------------");
+	   String line1 = ("Mileage" + "     " + "Reimbursement"
+              + "\r\n-------" + "     " + "-------------");
 	   // Print to outputFile
 	   output.println(line1);
-	   output.println(line2);
 	   
 	   //print to console
 	   System.out.println(line1);
-	   System.out.println(line2);
 	   
    } // End printHeading
    
@@ -242,28 +240,19 @@ public class FrankFerrer_1_03 {
    (PrintWriter output, double avgM, double avgR, double sumM, 
 	double sumR, int nVals, int valNum)
    {
-         String line1 =("o Average Mileage is: " + avgM);
-         String line2 =("o Average Reimbursement is: $" + avgR);
-         String line3 =("o Total Mileage is: " + sumM);
-         String line4 =("o Total Reimbursement is: $" + sumR);
-         String line5 =("o Number of values processed: " + nVals);
-         String line6 =("o Number of valid values processed: " + valNum);
+         String line1 =("o Average Mileage is: " + avgM
+         + "\r\no Average Reimbursement is: $" + avgR
+         + "\r\no Total Mileage is: " + sumM
+         + "\r\no Total Reimbursement is: $" + sumR
+         + "\r\no Number of values processed: " + nVals
+         + "\r\no Number of valid values processed: " + valNum);
          
 	   	output.println("");
 	      output.println(line1);
-	      output.println(line2);
-	      output.println(line3);
-	      output.println(line4);
-	      output.println(line5);
-	      output.println(line6);
+         
 	      //print to console
 	      System.out.println("");
 	      System.out.println(line1);
-	      System.out.println(line2);
-	      System.out.println(line3);
-	      System.out.println(line4);
-	      System.out.println(line5);
-         System.out.println(line6);
    
    }
    
