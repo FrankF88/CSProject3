@@ -16,7 +16,7 @@ Mileage     Reimbursement
 
 o Average Mileage is: 1222.975
 o Average Reimbursement is: $129.13
-o Total Mileage is: 1033.04
+o Total Mileage is: 9783.8
 o Total Reimbursement is: $1033.04
 o Number of values processed: 10
 o Number of valid values processed: 8
